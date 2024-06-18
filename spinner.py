@@ -1,15 +1,19 @@
+from dash import dcc, html
 import dash
 import dash_bootstrap_components as dbc
-from dash import html
 from dash.dependencies import Input, Output
-
 app = dash.Dash(__name__)
 
 app.layout = html.Div([
-    dbc.Progress(id="my-progress-bar", value=0, striped=True, animated=True),
-    html.Button('Submit', id='submit-button', n_clicks=0)
+    dcc.Loading(
+        id="loading",
+        type="circle",
+        children=[
+            dbc.Progress(id="my-progress-bar", value=25, striped=True, animated=True),
+            html.Button('Submit', id='submit-button', n_clicks=0)
+        ]
+    )
 ])
-
 
 @app.callback(
     Output('my-progress-bar', 'value'),
