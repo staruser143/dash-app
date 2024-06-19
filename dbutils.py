@@ -8,14 +8,24 @@ def parse_filter_query(filter_query):
         'sgt': '>',
         'slt': '<',
         'seq': '=',
-        'sneq': '!='
+        'sneq': '!=',
+        '>': '>',
+        '<': '<',
+        '=': '=',
+        '!=': '!='
     }
 
     for condition in conditions:
         column, operator, value = condition.split(' ')
         column = column[1:-1]  # remove the curly braces
 
-        sql_operator = operator_mapping[operator]
+        #sql_operator = operator_mapping[operator]
+        sql_operator = operator_mapping.get(operator)
+        if sql_operator is None and operator[0] == 's':
+            sql_operator = operator_mapping.get(operator[1:])
+
+        if sql_operator is None:
+            raise ValueError(f"Invalid operator: {operator}")
 
         if operator == 'scontains':
             value = f"'%{value}%'"
@@ -33,7 +43,8 @@ def parse_filter_query(filter_query):
     return ' AND '.join(parsed_conditions)
 
 
-filter_query="{name} scontains John && {id} sgt 5"
-parsed_filter_query=parse_filter_query(filter_query)
-print(f"filter_query: {filter_query}")
-print(f"parsed_filter_query: {parsed_filter_query}")
+#filter_query="{name} scontains John && {id} sgt 5"
+#filter_query="{id} s> 4"
+#parsed_filter_query=parse_filter_query(filter_query)
+#print(f"filter_query: {filter_query}")
+#print(f"parsed_filter_query: {parsed_filter_query}")
