@@ -1,5 +1,9 @@
 import re
+import logging
+
+logger = logging.getLogger(__name__)
 def parse_filter_query(filter_query):
+    logging.info("START: parse_filter_query")
     conditions = re.split(' && ', filter_query, flags=re.IGNORECASE)
     parsed_conditions = []
 
@@ -46,5 +50,5 @@ def parse_filter_query(filter_query):
 #filter_query="{name} scontains John && {id} sgt 5"
 #filter_query="{id} s> 4"
 #parsed_filter_query=parse_filter_query(filter_query)
-#print(f"filter_query: {filter_query}")
-#print(f"parsed_filter_query: {parsed_filter_query}")
+#logger.info(f"filter_query: {filter_query}")
+#logger.info(f"parsed_filter_query: {parsed_filter_query}")
