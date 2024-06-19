@@ -1,0 +1,92 @@
+import pandas as pd
+import dash
+from dash import html, dash_table, Input, Output
+from sqlalchemy import create_engine, text
+
+from dbutils import parse_filter_query
+# Create an engine that uses a connection pool
+engine = create_engine('sqlite:///my_database.db', pool_size=10, max_overflow=20)
+
+# Create a Dash app
+app = dash.Dash(__name__)
+
+# Initialize the DataTable with empty data and enable sorting
+app.layout = html.Div([
+    dash_table.DataTable(
+        id='table',
+        columns=[{"name": i, "id": i} for i in pd.DataFrame().columns],
+        data=[],
+        page_action='custom',
+        page_current=0,
+        page_size=10,
+        page_count=1,  # Initialize page_count to 1
+        sort_action='custom',  # Enable sorting
+        filter_action="custom",
+        #sort_mode='multi',  # Allow sorting by multiple columns
+        sort_by=[]  # Initialize sort_by to an empty list
+    )
+])
+
+
+@app.callback(
+    Output('table', 'data'),
+    Output('table', 'columns'),
+    Output('table', 'page_count'),
+    Input('table', 'page_current'),
+    Input('table', 'page_size'),
+    Input('table', 'filter_query'),
+    Input('table', 'sort_by'))  
+def update_table(page_current, page_size, filter_query,sort_by):
+    print(f"START: update_table")
+    print(f"page_current: {page_current}")
+    print(f"page_size: {page_size}")
+    print(f"filter_query: {filter_query}")
+    print(f"sort_by: {sort_by}")
+   
+    # Calculate the indices of the data for the current page
+    start_idx = page_current * page_size
+
+    # Build the ORDER BY clause for the SQL query
+    if len(sort_by):
+        order_by = 'ORDER BY ' + ', '.join(
+            f"{col['column_id']} {'ASC' if col['direction'] == 'asc' else 'DESC'}"
+            for col in sort_by
+        )
+    else:
+        order_by = ''
+
+    where_clause = ''
+    if filter_query:
+        where_clause =" where " + parse_filter_query(filter_query) 
+       
+
+    print(f"where_clause: {where_clause}")
+
+     # Execute a SQL query to fetch the data for the current page
+    query = text(f"SELECT * FROM employees {where_clause} {order_by} LIMIT :start, :count").bindparams(start=start_idx, count=page_size)
+    # Compile the query with literal binds
+    compiled_query = str(query.compile(engine, compile_kwargs={"literal_binds": True}))
+    print(f'Debug Query is: {compiled_query}')
+
+    df = pd.read_sql_query(query, engine, params={"start": start_idx, "count": page_size})
+     
+    # Execute a SQL query to count the total number of records
+    if filter_query:
+        count_query = text("SELECT COUNT(*) FROM employees  " + where_clause)
+    else:
+        count_query = text("SELECT COUNT(*) FROM employees")
+
+    connection = engine.connect()
+    total_count = connection.execute(count_query).scalar()
+    connection.close()
+
+    # Calculate the total number of pages
+    page_count = -(-total_count // page_size)  # Equivalent to math.ceil(total_count / page_size)
+    
+    print(f"END: update_table")
+    # Return the data, columns, and page_count for the DataTable
+    return df.to_dict('records'), [{"name": i, "id": i} for i in df.columns], page_count
+
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
