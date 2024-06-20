@@ -42,6 +42,7 @@ app.layout=layout
     Output('table', 'data'),
     Output('table', 'columns'),
     Output('table', 'page_count'),
+    Output('table', 'style_data_conditional'),
     Input('table', 'page_current'),
     Input('table', 'page_size'),
     Input('table', 'filter_query'),
@@ -102,7 +103,7 @@ def update_table(page_current, page_size, filter_query,sort_by):
     
     logger.info(f"END: update_table")
     # Return the data, columns, and page_count for the DataTable
-    return df.to_dict('records'), [{"name": i, "id": i} for i in df.columns], page_count
+    return df.to_dict('records'), [{"name": i, "id": i} for i in df.columns], page_count, style_data_conditional
 
 
 if __name__ == '__main__':
