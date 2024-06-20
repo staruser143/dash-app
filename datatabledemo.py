@@ -12,7 +12,6 @@ logging.basicConfig(
 )
 
 
-
 from dbutils import parse_filter_query
 # Create an engine that uses a connection pool
 engine = create_engine('sqlite:///my_database.db', pool_size=10, max_overflow=20)
@@ -21,7 +20,7 @@ engine = create_engine('sqlite:///my_database.db', pool_size=10, max_overflow=20
 app = dash.Dash(__name__)
 
 # Initialize the DataTable with empty data and enable sorting
-app.layout = html.Div([
+layout = html.Div([
     dash_table.DataTable(
         id='table',
         columns=[{"name": i, "id": i} for i in pd.DataFrame().columns],
@@ -37,6 +36,7 @@ app.layout = html.Div([
     )
 ])
 
+app.layout=layout
 
 @app.callback(
     Output('table', 'data'),
@@ -80,6 +80,13 @@ def update_table(page_current, page_size, filter_query,sort_by):
 
     df = pd.read_sql_query(query, engine, params={"start": start_idx, "count": page_size})
      
+    style_data_conditional = [
+        {
+            'if': {'column_id': col},
+            'textAlign': 'left' if df[col].dtype == 'O' else 'right'
+        }
+        for col in df.columns
+    ]
     # Execute a SQL query to count the total number of records
     if filter_query:
         count_query = text("SELECT COUNT(*) FROM employees  " + where_clause)
