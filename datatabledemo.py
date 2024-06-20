@@ -26,6 +26,7 @@ layout = html.Div([
         columns=[{"name": i, "id": i} for i in pd.DataFrame().columns],
         data=[],
         style_table={'overflowX': 'auto'},  # Add a horizontal scrollbar
+        
         page_action='custom',
         page_current=0,
         page_size=10,
