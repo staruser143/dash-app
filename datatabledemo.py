@@ -84,10 +84,20 @@ def update_table(page_current, page_size, filter_query,sort_by):
     style_data_conditional = [
         {
             'if': {'column_id': col},
-            'textAlign': 'left' if df[col].dtype == 'O' else 'right'
+        'textAlign': 'left' if df[col].dtype == 'O' else 'right'
         }
         for col in df.columns
+    ] +     [
+        {
+            'if': {'row_index': 'odd'},
+            'backgroundColor': 'rgb(248, 248, 248)'  # color for odd rows
+        },
+        {
+             'if': {'row_index': 'even'},
+            'backgroundColor': 'white'  # color for even rows
+        }
     ]
+    
     # Execute a SQL query to count the total number of records
     if filter_query:
         count_query = text("SELECT COUNT(*) FROM employees  " + where_clause)
