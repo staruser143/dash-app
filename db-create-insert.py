@@ -15,6 +15,10 @@ cursor = connection.cursor()
 cursor.execute("DROP TABLE IF EXISTS employees")
 cursor.execute('CREATE TABLE IF NOT EXISTS employees (id integer primary key, name text, position text, office text)')
 
+# Create a table Department with columns id integer primary key, name text, managername text
+cursor.execute("DROP TABLE IF EXISTS department")
+cursor.execute('CREATE TABLE IF NOT EXISTS department (id integer primary key, name text, managername text)')
+
 # Insert a row of data
 cursor.execute("DELETE FROM employees")
 # Insert 1000 rows of fake data in a loop with id starting from 1
