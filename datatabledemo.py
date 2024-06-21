@@ -21,6 +21,19 @@ app = dash.Dash(__name__)
 
 # Initialize the DataTable with empty data and enable sorting
 layout = html.Div([
+     dcc.Dropdown(
+        id='field-dropdown',
+        options=[{'label': i, 'value': i} for i in  pd.DataFrame().columns]
+       
+    ),
+    dcc.Dropdown(
+        id='operator-dropdown',
+        options=[{'label': i, 'value': i} for i in ['=', '!=', '>', '<', '>=', '<=']]
+    ),
+    dcc.Input(
+        id='value-input',
+        type='text'
+    ),
     dash_table.DataTable(
         id='table',
         columns=[{"name": i, "id": i} for i in pd.DataFrame().columns],
