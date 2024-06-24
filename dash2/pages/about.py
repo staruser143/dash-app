@@ -2,7 +2,7 @@ from dash import html,dcc
 
 layout=html.Div([
     html.H1('Hello Dash'),
-    html.Div('Dash: Select US States.'),
+    html.Div(' Select US States.'),
     html.Div(id="demo1"),
     # Add a dropdown with values from 1 to 25
     dcc.Dropdown(
