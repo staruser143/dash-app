@@ -1,6 +1,6 @@
 import pandas as pd
 import dash
-from dash import html, dash_table, Input, Output
+from dash import html, dcc, dash_table, Input, Output
 from sqlalchemy import create_engine, text
 import logging
 

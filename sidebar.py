@@ -4,7 +4,8 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 import page1
 import page2
-import datatabledemo
+i
+
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 

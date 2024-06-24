@@ -4,7 +4,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output
 import page1
 import page2
-import datatabledemo
+import layouts
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True)
 
@@ -12,7 +12,7 @@ sidebar = dbc.Nav(
     [
         dbc.NavLink("Page 1", href="/page-1", id="page-1-link"),
         dbc.NavLink("Page 2", href="/page-2", id="page-2-link"),
-        dbc.NavLink("Datatable", href="/datatabledemo", id="datatable-link"),
+        dbc.NavLink("Table Listing", href="/tablelisting", id="tablelisting-link"),
     ],
     vertical=True,
     pills=True,
@@ -49,9 +49,9 @@ def render_page_content(pathname):
     if pathname in ["/", "/page-1"]:
         return page1.layout
     elif pathname == "/page-2":
-        return page2.layout
-    elif pathname == "/datatabledemo":
-        return datatabledemo.layout
+        return page2.layoutI
+    elif pathname == "/tablelisting":
+        return layouts.layout
     # If the user tries to reach a different page, return a 404 message
     return dbc.Card(
         [

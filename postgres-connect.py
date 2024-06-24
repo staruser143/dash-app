@@ -12,8 +12,9 @@ conn = psycopg2.connect(
 try:
     # Step 4: Create a cursor object
     cursor = conn.cursor()
-    
-    cursor.execute("CREATE TABLE IF NOT EXISTS transactions (id serial PRIMARY KEY, name VARCHAR(100))")
+    # Drop the table transactions
+    cursor.execute("DROP TABLE transactions")
+    cursor.execute("CREATE TABLE  transactions (id serial PRIMARY KEY, name VARCHAR(100))")
     #Add comment to table transactions
     cursor.execute("COMMENT ON TABLE transactions IS 'Stores transaction records'")
     #Add comment to column id

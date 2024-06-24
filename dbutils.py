@@ -16,7 +16,8 @@ def parse_filter_query(filter_query):
         '>': '>',
         '<': '<',
         '=': '=',
-        '!=': '!='
+        '!=': '!=',
+        'icontains':'ILIKE'
     }
 
     for condition in conditions:
