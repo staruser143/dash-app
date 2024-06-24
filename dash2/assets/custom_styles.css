@@ -1,0 +1,20 @@
+.sidebar-style {
+    position: 'fixed';
+    top: 0;
+    left':  0;
+    bottom: 0;
+    width: '20%';
+    padding: '20px 10px';
+    background-color': '#f8f9fa';
+}
+
+.content-style {
+    margin-left: '25%',
+    margin-right: '5%',
+    padding: '20px 10px',
+}
+
+.navbar-style {
+    background-color: 'grey', /* Bootstrap primary color */
+    padding: '10px 0',
+}

@@ -3,6 +3,7 @@ import dash
 from dash import html, dcc, dash_table, Input, Output
 from sqlalchemy import create_engine, text
 import logging
+import filterui
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +23,7 @@ app = dash.Dash(__name__)
 # Initialize the DataTable with empty data and enable sorting
 layout = html.Div([
     
+    filterui.layout,
     dash_table.DataTable(
         id='table',
         columns=[{"name": i, "id": i} for i in pd.DataFrame().columns],
@@ -51,7 +53,7 @@ app.layout=layout
     Input('table', 'filter_query'),
     Input('table', 'sort_by'))  
 def update_table(page_current, page_size, filter_query,sort_by):
-    logging.info(f"START: update_table")
+    logger.info(f"START: update_table")
     logger.info(f"page_current: {page_current}")
     logger.info(f"page_size: {page_size}")
     logger.info(f"filter_query: {filter_query}")

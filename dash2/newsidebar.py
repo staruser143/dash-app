@@ -57,6 +57,23 @@ user_options = html.Div([
     dcc.Link('View Profile', href='/profile', style={'color': 'white', 'padding-right': '15px'}),
     dcc.Link('Sign Out', href='/logout', style={'color': 'white'}),
 ], style=right_link_container_style)
+
+# Define the logo style (optional, adjust as needed)
+logo_style = {
+    'height': '50px',  # Adjust the height to fit your NavBar
+    'padding': '5px',  # Adds some padding around the logo
+}
+
+# Update the navbar layout to include the logo
+navbar1= html.Div(
+    [
+        html.Img(src='/assets/bird_2.jpg', style=logo_style),  # Update the src path to your logo
+        html.H2('Demo Application', style={'textAlign': 'center', 'color': 'white'}),
+        # The rest of your NavBar content here
+    ],
+    style=navbar_style
+)
+
 # Create the NavBar layout
 navbar = html.Div(
     [
@@ -86,7 +103,7 @@ content = html.Div(id='page-content', style=content_style)
 
 # Combine sidebar and content into the app layout
 app.layout = html.Div([
-    navbar,
+    #navbar,
      html.Div([sidebar, content], style={'margin-top': '10px'})  # Adjust margin-top based on the height of your navbar
 ])
 
