@@ -1,0 +1,87 @@
+{
+  "props": {
+    "children": [
+      {
+        "props": {
+          "options": [
+            {
+              "label": "Field 1",
+              "value": "field1"
+            },
+            {
+              "label": "Field 2",
+              "value": "field2"
+            }
+          ],
+          "placeholder": "Select Field",
+          "id": {
+            "type": "field-dropdown",
+            "index": 0
+          },
+          "search_value": "",
+          "value": "field1"
+        },
+        "type": "Dropdown",
+        "namespace": "dash_core_components"
+      },
+      {
+        "props": {
+          "options": [
+            {
+              "label": "=",
+              "value": "="
+            },
+            {
+              "label": "!=",
+              "value": "!="
+            },
+            {
+              "label": ">",
+              "value": ">"
+            },
+            {
+              "label": "<",
+              "value": "<"
+            }
+          ],
+          "placeholder": "Select Operator",
+          "id": {
+            "type": "operator-dropdown",
+            "index": 0
+          }
+        },
+        "type": "Dropdown",
+        "namespace": "dash_core_components"
+      },
+      {
+        "props": {
+          "type": "text",
+          "placeholder": "Enter value",
+          "id": {
+            "type": "value-input",
+            "index": 0
+          },
+          "value": "43",
+          "n_blur": 1,
+          "n_blur_timestamp": 1719303444481
+        },
+        "type": "Input",
+        "namespace": "dash_core_components"
+      },
+      {
+        "props": {
+          "children": null
+        },
+        "type": "Br",
+        "namespace": "dash_html_components"
+      }
+    ],
+    "style": {
+      "display": "flex",
+      "align-items": "center",
+      "margin-bottom": "10px"
+    }
+  },
+  "type": "Div",
+  "namespace": "dash_html_components"
+}

@@ -1,7 +1,7 @@
 from dash import html,dash_table
 import pandas as pd
-import filterui
-from filterui import layout
+#import filterui
+from pages import filterui
 
     
 # Initialize the DataTable with empty data and enable sorting
