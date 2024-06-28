@@ -24,7 +24,7 @@ cursor.execute("DELETE FROM employees")
 # Insert 1000 rows of fake data in a loop with id starting from 1
 # Generate mock data
 mock_data = []
-for i in range(1, 1001):
+for i in range(1, 5):
     name = fake.name()
     position = random.choice(["Manager", "AVP", "Secretary"])
     office = random.choice(["Head Office", "East Office", "West Office"])

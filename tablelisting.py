@@ -2,22 +2,16 @@ import dash
 from dash import dcc, html, dash_table
 from dash.dependencies import Input, Output
 import pandas as pd
-#import sqlite3  # Assuming you're using SQLite; change as per your DB
-import psycopg2
-# Connect to your database
-#conn = sqlite3.connect('my_database.db')
 
-conn=psycopg2.connect(
-    dbname='mydatabase',
-    user='postgres',
-    password='mysecretpassword',
-    host='localhost',
-    port='5432')
+import psycopg2
+
+
+
 app = dash.Dash(__name__)
 
 def fetch_table_names():
     conn=psycopg2.connect(
-    dbname='mydatabase',
+    dbname='my_database',
     user='postgres',
     password='mysecretpassword',
     host='localhost',
@@ -65,7 +59,7 @@ def update_table_structure(selected_table):
                 ORDER BY c.ordinal_position
                 """
         conn=psycopg2.connect(
-            dbname='mydatabase',
+            dbname='my_database',
             user='postgres',
             password='mysecretpassword',
             host='localhost',

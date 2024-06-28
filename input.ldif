@@ -1,0 +1,5 @@
+ldapsearch -x -D "uid=ohenry,ou=users,dc=sri,dc=example,dc=com" -w 'userpassword' -b "dc=sri,dc=example,dc=com" "(uid=ohenry)"
+
+slappasswd -h {SSHA} -s yourpasswordslappasswd -h {SSHA} -s yourpassword
+
+ldapsearch -x -D "uid=ohenry,ou=users,dc=sri,dc=example,dc=com" -w 'userpassword' -b "dc=sri,dc=example,dc=com" "(uid=ohenry)"
