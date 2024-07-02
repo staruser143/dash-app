@@ -8,7 +8,6 @@ connection = sqlite3.connect('my_database.db')
 cursor = connection.cursor()
 
 # Execute a DELETE statement
-cursor.execute("DELETE FROM employees WHERE name = 'John Doe'")
-
+cursor.execute("DELETE FROM user_table_access")
 # Commit the changes
 connection.commit()
