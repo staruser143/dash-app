@@ -8,7 +8,7 @@ connection = sqlite3.connect('my_database.db')
 cursor = connection.cursor()
 
 # Execute a SELECT statement
-cursor.execute("SELECT * FROM Users")
+cursor.execute("SELECT * FROM user_table_access")
 
 # Fetch all records
 records = cursor.fetchall()
