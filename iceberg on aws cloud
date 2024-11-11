@@ -1,0 +1,90 @@
+To get started with Apache Iceberg on AWS, you’ll want to focus on two main areas: setting up Iceberg tables in AWS and choosing a query engine compatible with Iceberg, such as Amazon Athena, AWS Glue, or Apache Spark on EMR. Here's a general step-by-step guide:
+
+1. Set Up S3 for Storage
+
+Iceberg uses Amazon S3 to store data files and metadata.
+
+Create an S3 bucket to use as the storage layer for your Iceberg tables. Ensure that you have the necessary permissions to read and write to this bucket.
+
+
+2. Choose and Set Up a Catalog
+
+Iceberg requires a catalog to manage table metadata. AWS Glue Catalog and Hive Metastore are popular options on AWS.
+
+Using AWS Glue Catalog:
+
+AWS Glue provides a fully managed cataloging service, which is natively supported by Iceberg.
+
+Configure the Glue Catalog for your Iceberg tables, ensuring you have the necessary Glue permissions.
+
+
+Using Hive Metastore on Amazon EMR:
+
+Alternatively, you can set up a Hive Metastore on an EMR cluster and use it as your catalog.
+
+
+
+3. Choose a Compute Engine
+
+Iceberg supports several compute engines on AWS. Here are some options:
+
+Amazon Athena:
+
+Amazon Athena has native support for Iceberg, so you can directly query Iceberg tables using SQL.
+
+Ensure Athena is configured to use AWS Glue as the catalog.
+
+
+AWS Glue ETL (Apache Spark):
+
+AWS Glue supports Iceberg through Spark, allowing you to run ETL jobs on Iceberg tables.
+
+To enable Iceberg support, configure your AWS Glue job with the necessary Iceberg dependencies.
+
+
+Amazon EMR (Apache Spark):
+
+You can use Apache Spark on EMR to create and query Iceberg tables.
+
+When launching an EMR cluster, add the Iceberg JAR files to Spark. This can be done via bootstrap actions or custom configurations.
+
+
+
+4. Create and Manage Iceberg Tables
+
+Use Spark, Athena, or another compatible tool to create and manage Iceberg tables.
+
+In Spark (on Glue or EMR):
+
+# Example Spark code to create an Iceberg table
+spark.sql("CREATE TABLE my_iceberg_table (id bigint, name string) USING iceberg")
+
+In Athena:
+
+Use standard SQL to interact with the table once it’s defined in Glue.
+
+
+
+5. Query and Update Data in Iceberg Tables
+
+Use Athena, Glue, or Spark jobs to query and update data in your Iceberg tables.
+
+Example Query:
+
+SELECT * FROM my_iceberg_table WHERE id > 100;
+
+
+6. Optimize and Manage Table Maintenance
+
+Iceberg provides features like time travel, schema evolution, and partition evolution. These can be useful for managing large datasets in production environments.
+
+Consider periodically running compaction jobs to optimize file sizes, especially if you have frequent updates.
+
+
+Additional Resources
+
+Iceberg Documentation
+
+AWS Glue Documentation for Iceberg
+
+
