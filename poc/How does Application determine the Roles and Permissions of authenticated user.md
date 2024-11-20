@@ -171,5 +171,3 @@ You can use an IdP for authentication and a backend database for granular permis
    - Refresh permissions periodically or upon user logout/login to reflect any role updates.
 
 ---
-
-Would you like an end-to-end example implemented in Dash, including user login, role mapping, and permission validation?
