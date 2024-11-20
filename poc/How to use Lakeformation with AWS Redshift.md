@@ -174,5 +174,3 @@ Lake Formation provides access logs in **AWS CloudTrail**, allowing you to audit
    - Ensure Glue crawlers or manual updates reflect the latest schema and data changes.
 
 ---
-
-Would you like detailed guidance on setting up a complete integration with Redshift, Glue, and Lake Formation, or an example for a specific use case?
