@@ -31,4 +31,3 @@ AWS Lake Formation is a managed service designed to simplify the process of crea
    - **Data Sharing:** Collaborating with external or internal stakeholders using shared datasets.
    - **Governance:** Ensuring compliance with data governance and access control requirements.
 
-Would you like detailed examples or guidance on using it with specific AWS services?
