@@ -131,4 +131,4 @@ For example, you may limit users to only certain columns or tables based on thei
 
 ---
 
-### **Would you like more details on how to set up the IAM roles, Lake Formation permissions, or how to integrate this flow into your Dash app?**
+
