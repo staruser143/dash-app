@@ -74,4 +74,4 @@ For scalability, security, and ease of management:
 3. Use Lake Formation for fine-grained permissions.
 4. Optionally, abstract access via a custom application or service like QuickSight.
 
-Would you like guidance on setting up federation with your existing IdP, or more details on the application-based approach?
+
