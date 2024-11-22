@@ -20,10 +20,6 @@ AWS Lake Formation is a managed service designed to simplify the process of crea
    - Works with AWS Glue to transform and prepare data for analytics.
    - Integrates seamlessly with AWS analytics services like Amazon Athena, Redshift Spectrum, and EMR.
 
-### 6. **Governed Tables**
-   - Provides transaction support, ensuring ACID compliance and consistency in your data lake.
-   - Enables time travel queries, rollback, and simplifies data lake governance.
-
 ### Common Use Cases:
    - **Data Consolidation:** Centralizing data from different sources for unified analytics.
    - **Secure Analytics:** Running analytics securely using tools like Athena, Redshift, or SageMaker.
