@@ -1,0 +1,254 @@
+Designing a Lakehouse schema for Microsoft Fabric involves combining the principles of a traditional data warehouse schema (optimized for analytics) with the data lake paradigm (scalable, flexible, and based on open formats). The Lakehouse schema should ensure efficient querying, data lineage, and support for a variety of workloads, from batch analytics to real-time processing.
+
+Here’s a step-by-step guide to designing a Lakehouse schema:
+
+
+---
+
+1. Understand Business Requirements
+
+Identify the key use cases:
+
+What analytics will the Lakehouse support (e.g., sales, customer behavior, real-time monitoring)?
+
+What reporting tools will consume the data (e.g., Power BI, notebooks)?
+
+
+Define data types and workloads:
+
+Batch ingestion vs. real-time streaming.
+
+Types of users (data analysts, data scientists, business users).
+
+
+Understand query patterns:
+
+Frequent aggregations or joins? Ad hoc queries?
+
+
+
+
+---
+
+2. Adopt a Layered Architecture
+
+To ensure the schema is modular and supports scalability, organize it into distinct layers:
+
+a. Raw Layer (Bronze)
+
+Stores raw, unprocessed data as ingested from source systems (e.g., transactional systems, IoT devices).
+
+Data is stored in its native format (e.g., JSON, Parquet, CSV).
+
+Schema: Schema-on-read (schema applied when data is queried).
+
+
+Example:
+
+Folder structure: OneLake/<domain>/bronze/<table>/<YYYY/MM/DD>/
+
+Table name: raw_sales_data
+
+
+b. Cleansed/Refined Layer (Silver)
+
+Processes and cleans the raw data for analytical use.
+
+Standardizes data formats and applies data quality rules (e.g., handling nulls, standardizing units).
+
+Schema: Normalized schema with clearly defined data types and relationships.
+
+
+Example:
+
+Folder structure: OneLake/<domain>/silver/<table>/
+
+Table name: cleaned_sales_data
+
+
+c. Business/Presentation Layer (Gold)
+
+Contains aggregated and curated datasets optimized for analytics and reporting.
+
+Schema: Star schema or snowflake schema for easy querying.
+
+Fact tables: Central numeric tables (e.g., sales_facts).
+
+Dimension tables: Contextual data (e.g., product_dim, customer_dim).
+
+
+
+Example:
+
+Folder structure: OneLake/<domain>/gold/<table>/
+
+Tables: sales_facts, product_dim, customer_dim.
+
+
+
+---
+
+3. Choose the Schema Type
+
+Depending on the use case, you can adopt a schema type that balances analytics and scalability.
+
+a. Star Schema (Recommended for BI Analytics)
+
+Central fact tables store measurable data (e.g., sales, revenue).
+
+Surrounding dimension tables store attributes (e.g., customer names, product categories).
+
+
+Example:
+
+Fact table: sales_facts
+
+Columns: sale_id, customer_id, product_id, sale_date, amount, quantity.
+
+
+Dimension table: customer_dim
+
+Columns: customer_id, customer_name, region, email.
+
+
+
+b. Snowflake Schema
+
+Similar to the star schema but with normalized dimensions (hierarchical dimensions split into multiple tables).
+
+
+Example:
+
+Split product_dim into:
+
+product_dim: Product details.
+
+category_dim: Product categories.
+
+
+
+c. Data Vault (For Complex Lineage)
+
+Best for tracking historical changes and lineage.
+
+Hub-and-spoke model:
+
+Hubs: Core business keys (e.g., customers, products).
+
+Links: Relationships (e.g., customer-product purchases).
+
+Satellites: Descriptive attributes (e.g., customer address).
+
+
+
+
+---
+
+4. Use Delta Tables
+
+In Microsoft Fabric, Delta tables are the preferred storage format for the Lakehouse. They provide:
+
+ACID transactions for consistency.
+
+Support for time travel and schema evolution.
+
+High performance for analytical queries.
+
+
+Implementation Steps:
+
+1. Use Delta Lake format in the bronze, silver, and gold layers.
+
+
+2. Partition large tables by frequently queried columns (e.g., sale_date).
+
+
+3. Optimize with Z-order clustering for faster lookups.
+
+
+
+Example Delta Table:
+
+CREATE TABLE sales_facts
+USING delta
+LOCATION 'OneLake/sales/gold/sales_facts'
+AS SELECT customer_id, product_id, sale_date, amount, quantity
+FROM silver.sales_data;
+
+
+---
+
+5. Data Partitioning and Performance Optimization
+
+Partitioning: Improve query performance by partitioning large tables (e.g., by year or region).
+
+Clustering: Use clustering keys to optimize query patterns.
+
+Caching: Cache frequently used data in memory for faster access.
+
+Auto-Optimize: Enable Delta Lake's auto-compaction and optimization features.
+
+
+
+---
+
+6. Implement Schema Governance
+
+Use Data Catalogs:
+
+Define metadata for each table, including descriptions, owners, and access policies.
+
+Register datasets in Microsoft Fabric's OneLake Explorer.
+
+
+Apply Data Lineage:
+
+Use tools like Fabric's native lineage tracking to understand data transformations.
+
+
+
+
+---
+
+7. Secure the Schema
+
+Apply role-based access controls (RBAC):
+
+Limit access to sensitive layers (e.g., only analysts can access gold layer).
+
+
+Implement row-level or column-level security (RLS/CLS) for sensitive data.
+
+Use Microsoft Purview for data governance and compliance tracking.
+
+
+
+---
+
+Example Schema
+
+Bronze (Raw Layer)
+
+Table: raw_sales_data | sale_id | customer_id | product_id | sale_date  | amount  | metadata           | |---------|-------------|------------|------------|---------|--------------------| | 1       | 101         | 5001       | 2024-11-28 | 100.00  | {"source": "api"} |
+
+
+---
+
+Silver (Cleansed Layer)
+
+Table: cleaned_sales_data | sale_id | customer_id | product_id | sale_date  | amount  | quantity | region | |---------|-------------|------------|------------|---------|----------|--------| | 1       | 101         | 5001       | 2024-11-28 | 100.00  | 2        | East   |
+
+
+---
+
+Gold (Presentation Layer)
+
+Fact Table: sales_facts | sale_id | customer_id | product_id | sale_date  | amount  | quantity | |---------|-------------|------------|------------|---------|----------| | 1       | 101         | 5001       | 2024-11-28 | 100.00  | 2        |
+
+Dimension Table: customer_dim | customer_id | customer_name | region | email             | |-------------|---------------|--------|-------------------| | 101         | John Doe      | East   | john.doe@mail.com |
+
+
+---
+
+Would you like help creating scripts for setting up the schema in Microsoft Fabric?
+
