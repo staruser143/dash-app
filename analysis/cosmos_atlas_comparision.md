@@ -1,4 +1,4 @@
-Sure! Here's a comparison of Azure Cosmos DB for MongoDB and MongoDB Atlas based on the aspects you mentioned:
+Comparison of Azure Cosmos DB for MongoDB and MongoDB Atlas based on the aspects:
 
 | **Feature** | **Azure Cosmos DB for MongoDB** | **MongoDB Atlas** |
 |-------------|--------------------------------|-------------------|
@@ -11,4 +11,3 @@ Sure! Here's a comparison of Azure Cosmos DB for MongoDB and MongoDB Atlas based
 
 Both databases offer robust features and are fully managed services, but they differ in terms of pricing models, operational efficiency, and support for federated queries. Azure Cosmos DB for MongoDB is tightly integrated with the Azure ecosystem, while MongoDB Atlas offers more flexibility with multi-cloud support.
 
-Does this help clarify the differences for you?
