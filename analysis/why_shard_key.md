@@ -1,4 +1,4 @@
-Yes, when working with a sharded cluster in MongoDB, you need to define a shard key. The shard key is crucial as it determines how data is distributed across shards in the cluster. Here’s why a shard key is essential:
+When working with a sharded cluster in MongoDB, we need to define a shard key. The shard key is crucial as it determines how data is distributed across shards in the cluster. Here’s why a shard key is essential:
 
 ### **Why a Shard Key is Important:**
 1. **Data Distribution**: The shard key helps in distributing data evenly across the shards. This ensures balanced load and prevents any single shard from becoming a bottleneck.
