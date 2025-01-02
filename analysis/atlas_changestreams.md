@@ -10,4 +10,3 @@ MongoDB Atlas provides several features for Change Streams, which allow applicat
 
 These features make MongoDB Atlas Change Streams a powerful tool for building real-time applications that need to react to data changes efficiently.
 
-Does this cover what you were looking for?
