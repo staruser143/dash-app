@@ -1,15 +1,15 @@
-Sure! Here's a detailed comparison of the pricing models for Azure Cosmos DB for MongoDB and MongoDB Atlas:
+Detailed comparison of the pricing models for Azure Cosmos DB for MongoDB and MongoDB Atlas:
 
 ### **Azure Cosmos DB for MongoDB Pricing**
 Azure Cosmos DB offers a flexible pricing model based on three main components: **compute, storage, and bandwidth**.
 
 1. **Compute Pricing**: 
    - **Request Units (RU)**: Azure Cosmos DB bills using Request Units (RU) measured per second (RU/s). The cost depends on the provisioned throughput.
-   - **Provisioned Throughput**: You can choose between Standard Provisioned Throughput, Autoscale Provisioned Throughput, and Serverless.
+   - **Provisioned Throughput**: We can choose between Standard Provisioned Throughput, Autoscale Provisioned Throughput, and Serverless.
    - **Free Tier**: Offers 1000 RU/s and 25 GB of storage per month.
 
 2. **Storage Pricing**: 
-   - **Consumed Storage**: You are billed for the total amount of storage consumed by your data and indexes.
+   - **Consumed Storage**: We are billed for the total amount of storage consumed by your data and indexes.
    - **Storage Units**: Storage is billed in GBs, rounded up to the nearest GB.
 
 3. **Bandwidth Pricing**: 
@@ -37,4 +37,3 @@ MongoDB Atlas offers a usage-based pricing model with different tiers based on y
 - **Azure Cosmos DB**: Offers a free tier with 1000 RU/s and 25 GB storage, with additional costs based on provisioned throughput, consumed storage, and data egress.
 - **MongoDB Atlas**: Provides a perpetual free tier for learning, a serverless tier starting at $0.10 per million reads, and dedicated tiers starting at $57/month.
 
-Does this help clarify the pricing details for you?
