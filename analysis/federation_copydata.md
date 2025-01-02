@@ -1,4 +1,4 @@
-Correct, you don't necessarily need to ingest data from Salesforce Data Cloud and Azure Cosmos DB collections into something like Azure Data Explorer (ADX) if your goal is to perform federated queries. With the capabilities provided by MongoDB Atlas Data Federation and Azure Cosmos DB for MongoDB, you can directly query the data from multiple sources without the need for data ingestion.
+We don't necessarily need to ingest data from Salesforce Data Cloud and Azure Cosmos DB collections into something like Azure Data Explorer (ADX) if our goal is to perform federated queries. With the capabilities provided by MongoDB Atlas Data Federation and Azure Cosmos DB for MongoDB, you can directly query the data from multiple sources without the need for data ingestion.
 
 ### **Direct Federated Queries:**
 - **MongoDB Atlas Data Federation**: Allows you to query data in real-time from various sources, including MongoDB collections and external data sources like Salesforce Data Cloud. This approach provides up-to-date data without the need for data ingestion and synchronization.
@@ -16,4 +16,4 @@ Correct, you don't necessarily need to ingest data from Salesforce Data Cloud an
 ### **Conclusion:**
 While federated queries provide a flexible and efficient way to access data from multiple sources, there are scenarios where data ingestion may still be beneficial for performance and complex integrations. However, for many use cases, the ability to query data directly from the source without ingestion offers significant advantages.
 
-Does this help clarify your options for performing federated queries?
+
