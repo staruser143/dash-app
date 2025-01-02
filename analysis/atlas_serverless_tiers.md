@@ -1,4 +1,4 @@
-MongoDB Atlas offers more than two tiers, giving you flexibility based on your needs. Here are the main tiers available:
+MongoDB Atlas offers more than two tiers, giving us flexibility based on your needs. Here are the main tiers available:
 
 ### **1. Shared Tier (Free)**
 - **Use Case**: Suitable for learning, testing, and small projects.
