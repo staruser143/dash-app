@@ -15,8 +15,7 @@ A shard key and a primary key serve different purposes, although they can someti
 
 ### **Differences**:
 - The primary key's main function is to uniquely identify documents, while the shard key's main function is to distribute data efficiently across shards.
-- You can have one primary key per document, but you can choose different shard keys for various collections to meet specific distribution needs.
+- We can have one primary key per document, but we can choose different shard keys for various collections to meet specific distribution needs.
 
 In summary, while both keys are important for database organization, their roles and purposes differ significantly.
 
-Does this help clarify the distinction between a shard key and a primary key?
