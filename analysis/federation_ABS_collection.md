@@ -1,4 +1,4 @@
-To write a federated query in MongoDB Atlas that combines data from Azure Blob Storage with data from a MongoDB collection, you can use MongoDB's Atlas Data Federation. Here's a step-by-step guide:
+To write a federated query in MongoDB Atlas that combines data from Azure Blob Storage with data from a MongoDB collection, we can use MongoDB's Atlas Data Federation. Here's a step-by-step guide:
 
 ### **Step 1: Configure Atlas Data Federation**
 1. **Create a Federated Database Instance**:
@@ -11,7 +11,7 @@ To write a federated query in MongoDB Atlas that combines data from Azure Blob S
    - Define a virtual collection that maps to the data in your Azure Blob Storage. For example, you might name it `azureData`.
 
 ### **Step 2: Write a Federated Query**
-With the federated database instance and virtual collection set up, you can now write a query that joins data from the MongoDB collection and the Azure Blob Storage.
+With the federated database instance and virtual collection set up, we can now write a query that joins data from the MongoDB collection and the Azure Blob Storage.
 
 ```javascript
 use federatedDatabase;
@@ -41,7 +41,7 @@ printjson(combinedData);
 3. **Combining Data**: Merge the data from both sources based on a common field, such as `customerId`, and create a combined result set.
 
 ### **Example with Aggregation Pipeline:**
-You can also use the aggregation pipeline to perform more complex operations:
+We can also use the aggregation pipeline to perform more complex operations:
 
 ```javascript
 db.orders.aggregate([
@@ -78,6 +78,6 @@ db.orders.aggregate([
 3. **$match**: Filters the documents based on specific criteria, such as `status`.
 4. **$project**: Selects the fields to include in the final result.
 
-This approach allows you to perform complex queries and aggregations using data from both MongoDB collections and Azure Blob Storage.
+This approach allows us to perform complex queries and aggregations using data from both MongoDB collections and Azure Blob Storage.
 
-Does this help you understand how to write federated queries using MongoDB Atlas and Azure Blob Storage?
+
