@@ -1,4 +1,4 @@
-Here's a comparison of the Change Streams features between MongoDB Atlas and Azure Cosmos DB for MongoDB:
+Comparison of the Change Streams features between MongoDB Atlas and Azure Cosmos DB for MongoDB:
 
 ### **MongoDB Atlas:**
 1. **Real-Time Data Changes**: Supports real-time data changes across collections, databases, and deployments.
@@ -22,4 +22,3 @@ Here's a comparison of the Change Streams features between MongoDB Atlas and Azu
 - **MongoDB Atlas** offers broader support for multi-region deployments and more advanced security features.
 - **Azure Cosmos DB for MongoDB** provides similar real-time data change capabilities but with some limitations on multi-shard clusters and sharded collections.
 
-Does this help clarify the differences between the two services?
