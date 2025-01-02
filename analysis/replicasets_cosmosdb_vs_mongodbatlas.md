@@ -1,4 +1,4 @@
-Yes, there are some differences in the functionality of replica sets between **MongoDB Atlas** and **Azure Cosmos DB for MongoDB**:
+There are some differences in the functionality of replica sets between **MongoDB Atlas** and **Azure Cosmos DB for MongoDB**:
 
 ### **MongoDB Atlas**:
 - **Replica Set Management**: MongoDB Atlas provides fully managed replica sets, handling failover, recovery, and scaling automatically.
@@ -17,6 +17,5 @@ Yes, there are some differences in the functionality of replica sets between **M
 - **Scaling**: Azure Cosmos DB provides more advanced scaling features, including multi-region writes and instantaneous scaling.
 - **Availability SLA**: Azure Cosmos DB offers a higher availability SLA compared to MongoDB Atlas.
 
-Both platforms provide robust replica set functionality, but the choice depends on your specific requirements, such as deployment flexibility, scaling needs, and availability SLAs.
+Both platforms provide robust replica set functionality, but the choice depends on specific requirements, such as deployment flexibility, scaling needs, and availability SLAs.
 
-Does this help clarify the differences between the two platforms?
