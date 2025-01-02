@@ -62,4 +62,3 @@ In a replica set, this document will be replicated across the primary and second
 
 By using replica sets, MongoDB provides a robust solution for high availability and data redundancy, making it suitable for mission-critical applications.
 
-Does this help you understand what a Replica Set is in MongoDB?
