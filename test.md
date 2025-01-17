@@ -19,7 +19,7 @@ flowchart TB
         ReadDB-->|Query Results| ReadAPI
    end
 
-   Cleint -->|Write Operations| API
+   Client -->|Write Operations| API
    Client -->|Read Operations| ReadAPI
    
 
