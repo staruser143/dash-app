@@ -3,7 +3,7 @@ flowchart TB
    Client[Client Application]
    API[API Layer]
    Kafka[Kafka Event Bus]
-   MongoDB[(EventStore\nMongoDB)]
+   MongoDB[(EventStore-MongoDB)]
    ReadDB[(Read Database)]
 
    subgraph Command Side
