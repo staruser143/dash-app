@@ -8,7 +8,7 @@ flowchart TB
 
    subgraph Command Side
        direction TB
-       Write API --> |Commands| EventBus
+       WriteAPI --> |Commands| EventBus
        EventBus--> |Events| EventStore
        EventStore-->|Project Events| ReadDB
    end
@@ -19,7 +19,7 @@ flowchart TB
         ReadDB-->|Query Results| ReadAPI
    end
 
-   Client -->|Write Operations| API
+   Client -->|Write Operations| WriteAPI
    Client -->|Read Operations| ReadAPI
    
 
