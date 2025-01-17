@@ -16,12 +16,6 @@ flowchart TB
 ```
 ```mermaid
 flowchart TD
-    subgraph Application
-        A[Spring Boot Application] --> B[Command Handler]
-        B --> C[Event Store (MongoDB)]
-        B --> D[Message Broker (Kafka)]
-    end
-
     subgraph EventStore
         C --> E[Event Stream]
     end
