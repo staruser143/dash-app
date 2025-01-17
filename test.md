@@ -1,28 +1,16 @@
-
 ```mermaid
-flowchart TD
-    subgraph Application
-        A[Spring Boot Application] --> B[Command Handler]
-        B --> C[Event Store (MongoDB)]
-        B --> D[Message Broker (Kafka)]
+flowchart TB
+    c1-->a2
+    subgraph one
+    a1-->a2
     end
-
-    subgraph EventStore
-        C --> E[Event Stream]
+    subgraph two
+    b1-->b2
     end
-
-    subgraph MessageBroker
-        D --> F[Kafka Topic]
+    subgraph three
+    c1-->c2
     end
-
-    subgraph Consumers
-        F --> G[Event Processor]
-        G --> H[Read Model Updater]
-        H --> I[Read Model (MongoDB)]
-    end
-
-    style Application fill:#f9f,stroke:#333,stroke-width:4px
-    style EventStore fill:#bbf,stroke:#333,stroke-width:4px
-    style MessageBroker fill:#bfb,stroke:#333,stroke-width:4px
-    style Consumers fill:#ffb,stroke:#333,stroke-width:4px
+    one --> two
+    three --> two
+    two --> c2
 ```
