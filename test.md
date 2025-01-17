@@ -1,14 +1,14 @@
 ```mermaid
 flowchart TB
    Client[Client Application]
-   API[API Layer]
+   Write API[Write API]
    EventBus[ Event Bus]
    EventStore[(EventStore)]
    ReadDB[(Read Database)]
 
    subgraph Command Side
        direction TB
-       API --> |Commands| EventBus
+       Write API --> |Commands| EventBus
        EventBus--> |Events| EventStore
        EventStore-->|Project Events| ReadDB
    end
