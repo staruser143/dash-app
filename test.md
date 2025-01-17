@@ -1,3 +1,5 @@
+
+```mermaid
 flowchart TD
     subgraph Application
         A[Spring Boot Application] --> B[Command Handler]
@@ -23,3 +25,4 @@ flowchart TD
     style EventStore fill:#bbf,stroke:#333,stroke-width:4px
     style MessageBroker fill:#bfb,stroke:#333,stroke-width:4px
     style Consumers fill:#ffb,stroke:#333,stroke-width:4px
+```
