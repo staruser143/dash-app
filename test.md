@@ -1,13 +1,27 @@
 ```mermaid
 flowchart TB
-    c1-->a2
-    subgraph one
-    a1-->a2
-    end
-    subgraph two
-    b1-->b2
-    end
-    subgraph three
-    c1-->c2
-    end
+   Client[Client Application]
+   API[API Layer]
+   Kafka[Kafka Event Bus]
+   MongoDB[(EventStore\nMongoDB)]
+   ReadDB[(Read Database)]
+
+   subgraph Command Side
+       direction TB
+       API --> |Commands| Kafka
+       Kafka--> |Events| MongoDB
+       MongoDB-->|Project Events| ReadDB
+   end
+
+   subgraph Query Side
+        direction TB
+        ReadAPI[Read API]
+        ReadDB-->|Query Results| ReadAPI
+   end
+
+   Cleint -->|Write Operations| API
+   Client -->|Read Operations| ReadAPI
+   
+
+
 ```
