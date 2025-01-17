@@ -1,7 +1,7 @@
 ```mermaid
 flowchart TB
    Client[Client Application]
-   Write API[Write API]
+   WriteAPI[Write API]
    EventBus[ Event Bus]
    EventStore[(EventStore)]
    ReadDB[(Read Database)]
