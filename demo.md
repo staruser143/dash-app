@@ -1,5 +1,5 @@
 ```mermaid
- flowchart LR
+ flowchart TB
     Client[Client Application]
     API[API Layer]
     Kafka[Kafka Event Bus]
